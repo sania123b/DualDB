@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { retrieveSchema } from "./rag/retrieveSchema.js";
 console.log("Gemini Key:", process.env.GEMINI_API_KEY.substring(0,8));
-const genAI = new GoogleGenerativeAI('AIzaSyBzjfN-P8A2f046wGn-WPpUHIA4BGeUlXE');
+const genAI = new GoogleGenerativeAI('');
 
 // Reasoning Agent for Oracle 10g (NO IDENTITY syntax)
 export async function reasoningAgent(userPrompt) {
