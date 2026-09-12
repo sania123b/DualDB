@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const genAI = new GoogleGenerativeAI(
-    'AIzaSyBzjfN-P8A2f046wGn-WPpUHIA4BGeUlXE'
+    ''
 );
 
 async function checkModels(){
