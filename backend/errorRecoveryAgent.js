@@ -2,7 +2,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 dotenv.config();
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI('AIzaSyBzjfN-P8A2f046wGn-WPpUHIA4BGeUlXE');
 
 export async function errorRecoveryAgent(originalSQL, oracleError, userPrompt) {
   try {

@@ -1,0 +1,4 @@
+node_modules
+.env
+queryLogs.txt
+*.log

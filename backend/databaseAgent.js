@@ -19,16 +19,23 @@ async function insertInitialLog(connection, userPrompt, generatedSql) {
         RETURNING LOG_ID INTO :logId`;
     
     // Bind variables are crucial for security and handling large CLOBs
-    const result = await connection.execute(insertSql, {
-        userPrompt: userPrompt,
-        generatedSql: generatedSql
-    }, {
-        autoCommit: true,
-        returning: { logId: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT } }
-    });
-    
-    // Store the generated LOG_ID
-    return result.outBinds.logId[0];
+    const result = await connection.execute(
+    insertSql,
+    {
+        userPrompt,
+        generatedSql,
+        logId: {
+            dir: oracledb.BIND_OUT,
+            type: oracledb.NUMBER
+        }
+    },
+    {
+        autoCommit: true
+    }
+);
+
+return result.outBinds.logId[0];
+
 }
 
 // --- NEW FUNCTION: Update Final Log ---
@@ -57,7 +64,11 @@ export async function databaseAgent(sqlQuery, userPrompt = "") {
     let finalResult; // To store the successful result rows
 
     try {
-        connection = await oracledb.getConnection({ /* ... connection details ... */ });
+        connection = await oracledb.getConnection({
+    user: "sania",
+    password: "sania123",
+    connectString: "localhost:1521/orcl"
+});
         
         // 1. Log Initial Attempt
         currentAuditLogId = await insertInitialLog(connection, userPrompt, sqlQuery);

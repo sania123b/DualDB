@@ -3,12 +3,12 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI('AIzaSyBzjfN-P8A2f046wGn-WPpUHIA4BGeUlXE');
 
 async function listModels() {
   try {
     const result = await fetch(
-      "https://generativelanguage.googleapis.com/v1/models?key=" + process.env.GEMINI_API_KEY
+      "https://generativelanguage.googleapis.com/v1/models?key=" + 'AIzaSyBzjfN-P8A2f046wGn-WPpUHIA4BGeUlXE'
     );
 
     const data = await result.json();
